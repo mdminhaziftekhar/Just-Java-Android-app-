@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
+    static int quantity = 0;
     /**
      * This method displays the given quantity value on the screen.
      */
@@ -32,10 +32,9 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int numberOfCoffees = 2;
         int price = 5;
-        display(numberOfCoffees);
-        displayPrice(numberOfCoffees * price);
+        display(quantity);
+        displayPrice(quantity * price);
     }
 
     /**
@@ -44,5 +43,17 @@ public class MainActivity extends AppCompatActivity {
     private void displayPrice(int number) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+    }
+
+    public void increment(View view){
+        quantity++;
+        display(quantity);
+    }
+
+    public void decrement(View view){
+        if(quantity <= 0) quantity = 0;
+        else quantity--;
+
+        display(quantity);
     }
 }
