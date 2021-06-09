@@ -56,4 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
         display(quantity);
     }
+
+    public void resetValue(View view){
+        quantity = 0;
+        display(quantity);
+    }
 }
