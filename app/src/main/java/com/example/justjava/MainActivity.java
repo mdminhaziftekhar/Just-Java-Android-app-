@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    static int quantity = 0;
+    static int quantity = 1;
+    static String priceMessage = "Free!";
     /**
      * This method displays the given quantity value on the screen.
      */
@@ -34,15 +35,18 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         int price = 5;
         display(quantity);
-        displayPrice(quantity * price);
+        if(quantity <= 0) priceMessage = "Free!";
+        else priceMessage = "Thanks for the order!";
+        displayPrice(quantity * price, priceMessage);
     }
 
     /**
      * This method displays the given price on the screen.
      */
-    private void displayPrice(int number) {
+    private void displayPrice(int number, String priceMessage) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+        displayMessage(priceMessage);
     }
 
     public void increment(View view){
@@ -60,5 +64,13 @@ public class MainActivity extends AppCompatActivity {
     public void resetValue(View view){
         quantity = 0;
         display(quantity);
+    }
+
+    /**
+     * This method displays the given text on the screen.
+     */
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view2);
+        priceTextView.setText(message);
     }
 }
