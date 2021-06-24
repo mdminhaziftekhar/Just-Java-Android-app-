@@ -122,8 +122,8 @@
 
     <Button
         android:id="@+id/reset"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:onClick="resetValue"
         android:text="Reset"
         app:backgroundTint="#676060"
